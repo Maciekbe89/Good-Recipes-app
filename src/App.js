@@ -5,17 +5,22 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    value: ""
+    value: "",
+    results: []
+    // title: "",
+    // href: "",
+    // ingredients: "",
+    // thumbnail: ""
   };
 
   handleInputChange = (e) => {
     this.setState({
       value: e.target.value
     });
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
-  handleCitySubmit = (e) => {
+  handleValueSubmit = (e) => {
     if (e) {
       e.preventDefault();
     }
@@ -26,9 +31,16 @@ class App extends Component {
       .then((e) => e.text())
       .then((e) => {
         const content = e.split("<!DOCTYPE")[0];
-        console.log(JSON.parse(content));
+        return JSON.parse(content);
       })
-      .catch((error) => console.log("error"));
+
+      .then((data) => {
+        this.setState({
+          results: data.results,
+          value: ""
+        });
+      })
+      .catch(() => console.log("error"));
   };
 
   render() {
@@ -37,9 +49,11 @@ class App extends Component {
         <Form
           value={this.state.value}
           change={this.handleInputChange}
-          submit={this.handleInputChange}
+          submit={this.handleValueSubmit}
         />
-        <Result />
+        {this.state.results.map((result) => (
+          <Result key={result.title} {...result} />
+        ))}
       </div>
     );
   }
