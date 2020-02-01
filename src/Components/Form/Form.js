@@ -1,14 +1,19 @@
 import React from "react";
+import {Multiselect} from "multiselect-react-dropdown";
 import "./Form.css";
 
-const Form = (props) => (
-  <form className="form" onSubmit={props.submit}>
-    <input
+const Form = ({submit, options, value, change, style}) => (
+  <form className="form" onSubmit={submit}>
+    <Multiselect
+      classname="input"
+      options={options}
+      displayValue="key"
       className="input"
       type="text"
       placeholder="Choose a components..."
-      value={props.value}
-      onChange={props.change}
+      value={value}
+      onSelect={change}
+      style={style}
     />
     <button>Search</button>
   </form>

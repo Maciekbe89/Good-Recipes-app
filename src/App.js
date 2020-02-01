@@ -1,23 +1,50 @@
 import React, {Component} from "react";
 import Form from "../src/Components/Form/Form";
 import Result from "../src/Components/Result/Result";
+// import {Multiselect} from "multiselect-react-dropdown";
 import "./App.css";
 
 class App extends Component {
   state = {
     value: "",
-    results: []
-    // title: "",
-    // href: "",
-    // ingredients: "",
-    // thumbnail: ""
+    results: [],
+    objectArray: [
+      {key: "garlic"},
+      {key: "tomato"},
+      {key: "potato"},
+      {key: "onion"},
+      {key: "bean"},
+      {key: "mashroom"},
+      {key: "carrot"}
+    ]
+  };
+  style = {
+    chips: {
+      background: "red"
+    },
+    searchBox: {
+      padding: "10px"
+    },
+    multiselectContainer: {
+      width: "500px",
+      "font-size": "20px",
+      margin: "auto"
+    },
+    inputField: {
+      padding: "10px",
+      "font-size": "20px"
+    },
+    optionContainer: {
+      margin: "20px"
+    }
   };
 
   handleInputChange = (e) => {
     this.setState({
-      value: e.target.value
+      value: e.map((item) => {
+        return item.key;
+      })
     });
-    // console.log(e.target.value);
   };
 
   handleValueSubmit = (e) => {
@@ -47,9 +74,11 @@ class App extends Component {
     return (
       <div>
         <Form
+          options={this.state.objectArray}
           value={this.state.value}
           change={this.handleInputChange}
           submit={this.handleValueSubmit}
+          style={this.style}
         />
         {this.state.results.map((result) => (
           <Result key={result.title} {...result} />
