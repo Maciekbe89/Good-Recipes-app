@@ -14,8 +14,9 @@ const Form = ({submit, options, value, change, style}) => (
       value={value}
       onSelect={change}
       style={style}
+      closeIcon="cancel"
     />
-    <button>Search</button>
+    <button className="btn">Search</button>
   </form>
 );
 

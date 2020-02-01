@@ -20,23 +20,30 @@ class App extends Component {
   };
   style = {
     chips: {
-      background: "red"
+      background: "lightgray",
+      color: "black",
+      padding: "6px",
+      fontSize: "20px"
     },
     searchBox: {
       padding: "10px"
     },
     multiselectContainer: {
-      width: "500px",
-      "font-size": "20px",
+      width: "700px",
+      // fontSize: "20px",
       margin: "auto"
     },
     inputField: {
       padding: "10px",
-      "font-size": "20px"
+      fontSize: "20px",
+      width: "60%"
     },
     optionContainer: {
-      margin: "20px"
+      // padding: "20px"
     }
+    // option: {
+    //   fontSize: "20px"
+    // }
   };
 
   handleInputChange = (e) => {
@@ -72,7 +79,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="main-container">
         <Form
           options={this.state.objectArray}
           value={this.state.value}
