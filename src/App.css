@@ -13,6 +13,12 @@
 }
 
 .main-page__icon {
-  width: 400px;
+  width: 25vw;
   margin: auto;
+}
+
+@media (orientation: portrait) and (min-width: 320px) {
+  .main-page__icon {
+    width: 50vw;
+  }
 }

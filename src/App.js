@@ -6,58 +6,28 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    value: "",
+    value: [],
     results: [],
-    objectArray: [
-      {key: "garlic"},
-      {key: "tomato"},
-      {key: "potato"},
-      {key: "onions"},
-      {key: "bean"},
-      {key: "mashrooms"},
-      {key: "carrot"},
-      {key: "cheddar cheese"},
-      {key: "milk"}
+    options: [
+      {value: "tomato", label: "Tomato"},
+      {value: "garlic", label: "Garlic"},
+      {value: "onions", label: "Onions"},
+      {value: "bean", label: "Bean"},
+      {value: "potato", label: "Potato"},
+      {value: "carrot", label: "Carrot"},
+      {value: "milk", label: "Milk"},
+      {value: "mashrooms", label: "Mashrooms"},
+      {value: "cheddar cheese", label: "Cheddar Cheese"},
+      {value: "cabbage", label: "Cabbage"},
+      {value: "corn", label: "Corn"},
+      {value: "eggplant", label: "Eggplant"},
+      {value: "eggs", label: "Eggs"}
     ]
   };
-  style = {
-    chips: {
-      background: "#ccc",
-      color: "black",
-      padding: "6px",
-      fontSize: "20px"
-    },
-    searchBox: {
-      // padding: "10px"
-    },
-    multiselectContainer: {
-      width: "67vw",
-      borderRadius: "25%",
-      margin: "auto",
-      gridRow: "2 / 1 span",
-      gridColumn: "1 / -1"
-    },
-    inputField: {
-      padding: "12px",
-      fontSize: "20px",
-      width: "60%"
-    },
-    optionContainer: {
-      // borderRadius: "25%"
-      // padding: "20px"
-    },
-    option: {
-      background: "linear-gradient(270deg, #0597f2 0%, #0460d9 100%)",
-      border: "none",
-      color: "#ccc"
-    }
-  };
 
-  handleInputChange = (e) => {
+  handleInputChange = (value) => {
     this.setState({
-      value: e.map((item) => {
-        return item.key;
-      })
+      value
     });
   };
 
@@ -66,7 +36,11 @@ class App extends Component {
       e.preventDefault();
     }
 
-    const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${this.state.value}`;
+    const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${this.state.value.map(
+      (item) => {
+        return item.value;
+      }
+    )}`;
 
     fetch(API)
       .then((e) => e.text())
@@ -87,11 +61,11 @@ class App extends Component {
     return (
       <div className="main-container">
         <Form
-          options={this.state.objectArray}
+          options={this.state.options}
           value={this.state.value}
           change={this.handleInputChange}
           submit={this.handleValueSubmit}
-          style={this.style}
+          // style={this.style}
         />
         {this.state.results.length === 0 ? (
           <img className="main-page__icon" src={Boil} alt="boil" />
