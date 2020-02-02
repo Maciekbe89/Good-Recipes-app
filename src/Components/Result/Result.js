@@ -13,9 +13,11 @@ const Result = ({title, href, ingredients, thumbnail}) => {
         <img className="icon" src={Food} alt="food" />
         <p>{ingredients}</p>
       </div>
-      <div className="link">
+      <div className="recipe">
         <img className="icon" src={Book} alt="book" />
-        <a href={href}>Link to recipe</a>
+        <a className="link" href={href}>
+          Link to recipe
+        </a>
       </div>
 
       <img className="img" src={thumbnail} alt={title} />

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import Form from "../src/Components/Form/Form";
 import Result from "../src/Components/Result/Result";
+import Boil from "./Assets/svg/boil.svg";
 // import {Multiselect} from "multiselect-react-dropdown";
 import "./App.css";
 
@@ -20,17 +21,17 @@ class App extends Component {
   };
   style = {
     chips: {
-      background: "lightgray",
+      background: "#ccc",
       color: "black",
       padding: "6px",
       fontSize: "20px"
     },
     searchBox: {
-      padding: "10px"
+      // padding: "10px"
     },
     multiselectContainer: {
       width: "700px",
-      // fontSize: "20px",
+      borderRadius: "25%",
       margin: "auto"
     },
     inputField: {
@@ -39,11 +40,14 @@ class App extends Component {
       width: "60%"
     },
     optionContainer: {
+      // borderRadius: "25%"
       // padding: "20px"
+    },
+    option: {
+      background: "linear-gradient(270deg, #0597f2 0%, #0460d9 100%)",
+      border: "none",
+      color: "#ccc"
     }
-    // option: {
-    //   fontSize: "20px"
-    // }
   };
 
   handleInputChange = (e) => {
@@ -70,8 +74,7 @@ class App extends Component {
 
       .then((data) => {
         this.setState({
-          results: data.results,
-          value: ""
+          results: data.results
         });
       })
       .catch(() => console.log("error"));
@@ -87,9 +90,13 @@ class App extends Component {
           submit={this.handleValueSubmit}
           style={this.style}
         />
-        {this.state.results.map((result) => (
-          <Result key={result.title} {...result} />
-        ))}
+        {this.state.results.length === 0 ? (
+          <img className="main-page__icon" src={Boil} alt="boil" />
+        ) : (
+          this.state.results.map((result) => (
+            <Result key={result.title} {...result} />
+          ))
+        )}
       </div>
     );
   }

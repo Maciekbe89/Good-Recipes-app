@@ -1,8 +1,10 @@
 .form {
   display: flex;
   flex-direction: row;
-  height: 200px;
-  background-color: green;
+  height: 250px;
+  background: linear-gradient(270deg, #0597f2 0%, #0460d9 100%);
+  border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 25%;
   /* grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr); */
   /* text-align: center; */
@@ -17,5 +19,6 @@
   width: 50px;
   height: 50px;
   align-self: center;
-  margin: 0 auto;
+  justify-self: flex-start;
+  /* margin: 0 auto; */
 }

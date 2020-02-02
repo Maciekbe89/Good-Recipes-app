@@ -3,33 +3,30 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
   /* margin: 40px 60px; */
-  padding: 40px;
+  padding: 30px;
   margin: 0 60px;
-  border-bottom: 0.5px solid black;
+  border-bottom: 0.5px solid #999;
 }
 
 .title {
   justify-self: center;
   grid-row: 1 / -1;
   grid-column: 1 / -1;
+  font-size: 30px;
 }
 
 .ingredients {
   display: flex;
-  /* justify-content: space-around; */
   grid-row: 2 / 4;
   grid-column: 1 / 2;
   align-self: center;
   font-size: 24px;
 }
 
-.link {
+.recipe {
   display: flex;
   grid-row: 4 / -1;
   grid-column: 1 / 2;
-  align-self: center;
-  text-transform: uppercase;
-  text-decoration: none;
 }
 
 .img {
@@ -39,10 +36,37 @@
   grid-row: 2 / -1;
   grid-column: 2 / -1;
   justify-self: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.img:hover {
+  transform: scale(2.3);
 }
 
 .icon {
   height: 50px;
   margin: 0 20px;
-  /* align-self: center; */
+  align-self: center;
+}
+
+.link {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  align-self: center;
+  margin-bottom: 10px;
+}
+
+.link:after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: #000;
+  transition: width 0.4s;
+}
+
+.link:hover::after {
+  width: 100%;
 }
