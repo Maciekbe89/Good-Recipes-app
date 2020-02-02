@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Form from "../src/Components/Form/Form";
 import Result from "../src/Components/Result/Result";
 import Boil from "./Assets/svg/boil.svg";
-// import {Multiselect} from "multiselect-react-dropdown";
 import "./App.css";
 
 class App extends Component {
@@ -13,10 +12,12 @@ class App extends Component {
       {key: "garlic"},
       {key: "tomato"},
       {key: "potato"},
-      {key: "onion"},
+      {key: "onions"},
       {key: "bean"},
-      {key: "mashroom"},
-      {key: "carrot"}
+      {key: "mashrooms"},
+      {key: "carrot"},
+      {key: "cheddar cheese"},
+      {key: "milk"}
     ]
   };
   style = {
@@ -30,12 +31,14 @@ class App extends Component {
       // padding: "10px"
     },
     multiselectContainer: {
-      width: "700px",
+      width: "67vw",
       borderRadius: "25%",
-      margin: "auto"
+      margin: "auto",
+      gridRow: "2 / 1 span",
+      gridColumn: "1 / -1"
     },
     inputField: {
-      padding: "10px",
+      padding: "12px",
       fontSize: "20px",
       width: "60%"
     },

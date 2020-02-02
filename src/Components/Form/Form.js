@@ -1,14 +1,14 @@
 import React from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import {Multiselect} from "multiselect-react-dropdown";
 import "./Form.css";
 
 const Form = ({submit, options, value, change, style}) => (
-  <form className="form" onSubmit={submit}>
+  <form className="form-container" onSubmit={submit}>
     <Multiselect
-      classname="input"
       options={options}
       displayValue="key"
-      className="input"
       type="text"
       placeholder="Choose a components..."
       value={value}
@@ -16,7 +16,9 @@ const Form = ({submit, options, value, change, style}) => (
       style={style}
       closeIcon="cancel"
     />
-    <button className="btn">Search</button>
+    <button className="button__search">
+      <FontAwesomeIcon className="icon__search" icon={faSearch} />
+    </button>
   </form>
 );
 
