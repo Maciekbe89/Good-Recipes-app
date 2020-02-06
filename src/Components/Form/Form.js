@@ -10,6 +10,7 @@ const Form = ({submit, options, value, change, style}) => (
       options={options}
       className="input"
       type="text"
+      key={value}
       placeholder="Choose a components..."
       value={value}
       onChange={change}
