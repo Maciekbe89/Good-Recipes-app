@@ -1,0 +1,2 @@
+export const SEARCH_RECIPES = "SEARCH_RECIPES";
+export const SET_LOADING = "SET_LOADING";

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+// import ClipLoader from "react-spinners/ClipLoader";
 import Form from "../src/Components/Form/Form";
 import Result from "../src/Components/Result/Result";
 import Boil from "./Assets/svg/boil.svg";
@@ -8,7 +8,8 @@ import "./App.css";
 const App = () => {
   const [value, setValue] = useState([]);
   const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const options = [
     {value: "tomato", label: "Tomato"},
     {value: "garlic", label: "Garlic"},
@@ -51,7 +52,11 @@ const App = () => {
       .then((data) => {
         setResults(data.results);
       })
-      .catch(() => console.log("error"));
+      .catch(() => {
+        console.log("error");
+
+        // return <p>ERROR</p>;
+      });
   };
 
   return (
@@ -63,7 +68,7 @@ const App = () => {
         submit={handleValueSubmit}
         key={options}
       />
-      <ClipLoader />
+
       {results.length === 0 ? (
         <img className="main-page__icon" src={Boil} alt="boil" />
       ) : (
