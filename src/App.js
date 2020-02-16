@@ -5,6 +5,9 @@ import Result from "../src/Components/Result/Result";
 import Boil from "./Assets/svg/boil.svg";
 import "./App.css";
 
+const API_ID = "e6b2cdec";
+const API_Key = "c36da8325813b145cad371475fb9ef35";
+
 const App = () => {
   const [value, setValue] = useState([]);
   const [results, setResults] = useState([]);
@@ -36,27 +39,47 @@ const App = () => {
       setValue("");
     }
 
-    const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${value.map(
+    const API = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${value.map(
       (item) => {
         return item.value;
       }
-    )}`;
+    )}&app_id=${API_ID}&app_key=${API_Key}`;
 
     fetch(API)
-      .then((e) => e.text())
-      .then((e) => {
-        const content = e.split("<!DOCTYPE")[0];
-        return JSON.parse(content);
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        }
+        throw Error("nie udało się");
       })
-
+      .then((response) => response.json())
       .then((data) => {
-        setResults(data.results);
+        console.log(data.hits);
+
+        setResults(data.hits);
       })
       .catch(() => {
         console.log("error");
-
-        // return <p>ERROR</p>;
       });
+    // const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${value.map(
+    //   (item) => {
+    //     return item.value;
+    //   }
+    // )}`;
+
+    // fetch(API)
+    //   .then((e) => e.text())
+    //   .then((e) => {
+    //     const content = e.split("<!DOCTYPE")[0];
+    //     return JSON.parse(content);
+    //   })
+
+    //   .then((data) => {
+    //     setResults(data.results);
+    //   })
+    //   .catch(() => {
+    //     console.log("error");
+    //   });
   };
 
   return (
@@ -72,7 +95,9 @@ const App = () => {
       {results.length === 0 ? (
         <img className="main-page__icon" src={Boil} alt="boil" />
       ) : (
-        results.map((result) => <Result key={result.title} {...result} />)
+        results.map((result) => (
+          <Result key={result.label} {...result.recipe} />
+        ))
       )}
     </div>
   );
