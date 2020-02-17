@@ -22,13 +22,13 @@ import "./Result.css";
 //   );
 // };
 
-const Result = ({label, url, ingredientsLines, image}) => {
+const Result = ({label, url, ingredientLines, image, calories}) => {
   return (
     <div className="result-container">
       <h2 className="recipe__title">{label}</h2>
       <div className="recipe__ingredients">
         <img className="recipe__icons" src={Food} alt="food" />
-        <p>{ingredientsLines}</p>
+        <p>{ingredientLines.join(", ")}</p>
       </div>
       <div className="recipe__link-cta">
         <img className="recipe__icons" src={Book} alt="book" />
@@ -36,7 +36,12 @@ const Result = ({label, url, ingredientsLines, image}) => {
           Link to recipe
         </a>
       </div>
-      <img className="recipe__image" src={image} alt={label} />
+      <div className="container">
+        <img className="recipe__image" src={image} alt={label} />
+        <div className="overlay">
+          <div className="text">{calories.toFixed(0)} kcal</div>
+        </div>
+      </div>
     </div>
   );
 };

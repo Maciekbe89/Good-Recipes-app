@@ -96,7 +96,7 @@ const App = () => {
         <img className="main-page__icon" src={Boil} alt="boil" />
       ) : (
         results.map((result) => (
-          <Result key={result.label} {...result.recipe} />
+          <Result key={result.recipe.label} {...result.recipe} />
         ))
       )}
     </div>
