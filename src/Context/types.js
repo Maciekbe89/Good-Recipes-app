@@ -1,2 +1,4 @@
 export const SEARCH_RECIPES = "SEARCH_RECIPES";
 export const SET_LOADING = "SET_LOADING";
+export const CLEAR_RECIPES = "CLEAR_RECIPES";
+export const ERROR_SEARCH = "ERROR_SEARCH";
