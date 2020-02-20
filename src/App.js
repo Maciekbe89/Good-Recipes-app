@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-// import ClipLoader from "react-spinners/ClipLoader";
+import {trackPromise} from "react-promise-tracker";
+import Loading from "../src/Components/Loading";
+import {usePromiseTracker} from "react-promise-tracker";
 import Form from "../src/Components/Form/Form";
 import Result from "../src/Components/Result/Result";
 import Boil from "./Assets/svg/boil.svg";
@@ -11,8 +13,7 @@ const API_Key = "c36da8325813b145cad371475fb9ef35";
 const App = () => {
   const [value, setValue] = useState([]);
   const [results, setResults] = useState([]);
-  // const [error, setError] = useState(true);
-  // const [loading, setLoading] = useState(true);
+  const {promiseInProgress} = usePromiseTracker();
   const options = [
     {value: "tomato", label: "Tomato"},
     {value: "garlic", label: "Garlic"},
@@ -44,23 +45,24 @@ const App = () => {
         return item.value;
       }
     )}&app_id=${API_ID}&app_key=${API_Key}`;
+    trackPromise(
+      fetch(API)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error("nie udało się");
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data.hits);
 
-    fetch(API)
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        }
-        throw Error("nie udało się");
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.hits);
-
-        setResults(data.hits);
-      })
-      .catch(() => {
-        console.log("error");
-      });
+          setResults(data.hits);
+        })
+        .catch(() => {
+          console.log("error");
+        })
+    );
     // const API = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${value.map(
     //   (item) => {
     //     return item.value;
@@ -91,8 +93,8 @@ const App = () => {
         submit={handleValueSubmit}
         key={options}
       />
-
-      {results.length === 0 ? (
+      <Loading />
+      {results.length === 0 && !promiseInProgress ? (
         <img className="main-page__icon" src={Boil} alt="boil" />
       ) : (
         results.map((result) => (

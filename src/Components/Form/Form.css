@@ -9,17 +9,19 @@
 }
 
 .input {
-  height: 70px;
+  height: 60px;
   width: 67vw;
   grid-row: 2 / 1 span;
   grid-column: 1 / -1;
   justify-self: center;
+  /* align-self: center; */
   font-size: 20px;
   color: black;
   border-bottom: none;
   outline: none;
-  border-radius: 5%;
-  line-height: 70px;
+  border-radius: 5px;
+  line-height: 60px;
+  /* outline: none; */
 }
 
 .button__search {
@@ -29,7 +31,6 @@
   grid-column: 6 / -1;
   font-size: 45px;
   background-color: #0597f2;
-  align-self: center;
   justify-self: center;
   color: #ccc;
   border: solid 3px #ccc;

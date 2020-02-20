@@ -12,13 +12,22 @@
   min-height: 100vh;
 }
 
-.main-page__icon {
+.main-page__icon,
+.spinner {
   width: 25vw;
   margin: auto;
 }
 
+.main-page__icon {
+  width: 25vw;
+}
+
+.spinner {
+  width: 45vw;
+}
+
 @media (orientation: portrait) and (min-width: 320px) {
   .main-page__icon {
-    width: 50vw;
+    width: 40vw;
   }
 }
