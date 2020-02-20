@@ -12,17 +12,14 @@
   min-height: 100vh;
 }
 
-.main-page__icon,
-.spinner {
-  margin: auto;
-}
-
 .main-page__icon {
   width: 25vw;
+  margin: auto;
 }
 
 .spinner {
   width: 45vw;
+  margin: 0 auto;
 }
 
 @media (orientation: portrait) and (min-width: 320px) {
