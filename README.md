@@ -2,12 +2,12 @@
 
 ### WEB
 
-![src/Assets/screens/screen1.PNG](src/Assets/screens/screen1.PNG)
-![src/Assets/screens/screen2.PNG](src/Assets/screens/screen2.PNG)
-![src/Assets/screens/screen6.PNG](src/Assets/screens/screen6.PNG)
+![src/Assets/screens/screen1.png](src/Assets/screens/screen1.png)
+![src/Assets/screens/screen2.png](src/Assets/screens/screen2.png)
+![src/Assets/screens/screen6.png](src/Assets/screens/screen6.png)
 
 ### MOBILE
 
-![src/Assets/screens/screen3.PNG](src/Assets/screens/screen3.PNG)
-![src/Assets/screens/screen4.PNG](src/Assets/screens/screen4.PNG)
-![src/Assets/screens/screen5.PNG](src/Assets/screens/screen5.PNG)
+![src/Assets/screens/screen3.png](src/Assets/screens/screen3.png)
+![src/Assets/screens/screen4.png](src/Assets/screens/screen4.png)
+![src/Assets/screens/screen5.png](src/Assets/screens/screen5.png)
